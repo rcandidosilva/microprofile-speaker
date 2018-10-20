@@ -14,17 +14,17 @@ build:
       code: mvn clean package
 
 #Push the docker image with our built and tested application to the Oracle Container Registry
-#push-release:
-#  steps:
-#  - internal/docker-push:
-#      username: $DOCKER_USERNAME
-#      password: $DOCKER_PASSWORD
-#      repository: $DOCKER_REPO
-#      registry: $DOCKER_REGISTRY
-#      tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
-#      working-dir: /pipeline/source
-#      ports: $PORT
-#      cmd: sh target/bin/start
+push-release:
+  steps:
+  - internal/docker-push:
+      username: $DOCKER_USERNAME
+      password: $DOCKER_PASSWORD
+      repository: $DOCKER_REPO
+      registry: $DOCKER_REGISTRY
+      tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
+      working-dir: /pipeline/source
+      ports: $PORT
+      cmd: sh target/bin/start
 
 #Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
 #deploy-to-cluster:
