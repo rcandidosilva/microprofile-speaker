@@ -11,11 +11,10 @@ spec:
     metadata:
       labels:
         app: microservice-speaker
-        coomit: ${WERCKER_GIT_COMMIT}
     spec:
       containers:
       - name: microservice-speaker
-        image: ${DOCKER_REPO}:${WERCKER_GIT_BRANCH}-${WERCKER_GIT_COMMIT}
+        image: rcandidosilva/microservice-speaker:latest
         imagePullPolicy: Always
         ports:
         - name: microservice-speaker
@@ -30,7 +29,6 @@ metadata:
   name: speaker-svc
   labels:
     app: microservice-speaker
-    commit: ${WERCKER_GIT_COMMIT}
 spec:
   type: NodePort #Exposes the service as a node port
   ports:
