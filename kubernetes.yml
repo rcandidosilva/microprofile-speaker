@@ -19,7 +19,7 @@ spec:
         imagePullPolicy: Always
         ports:
         - name: microservice-speaker
-          containerPort: ${PORT} #Endpoint is at port 8080 in the container
+          containerPort: 8080 #Endpoint is at port 8080 in the container
           protocol: TCP
       imagePullSecrets:
       - name: wercker
@@ -36,7 +36,7 @@ spec:
   ports:
   - port: 8080
     protocol: TCP
-    targetPort: ${PORT}
+    targetPort: 8080
   selector:
     app: microservice-speaker
 ---
