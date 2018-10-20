@@ -1,0 +1,42 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: microservice-speaker
+spec:
+  selector:
+    matchLabels:
+      app: microservice-speaker
+  replicas: 1 # deployment runs 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: microservice-speaker
+        coomit: ${WERCKER_GIT_COMMIT}
+    spec:
+      containers:
+      - name: microservice-speaker
+        image: ${DOCKER_REPO}:${WERCKER_GIT_BRANCH}-${WERCKER_GIT_COMMIT}
+        imagePullPolicy: Always
+        ports:
+        - name: microservice-speaker
+          containerPort: ${PORT} #Endpoint is at port 8080 in the container
+          protocol: TCP
+      imagePullSecrets:
+      - name: wercker
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: speaker-svc
+  labels:
+    app: microservice-speaker
+    commit: ${WERCKER_GIT_COMMIT}
+spec:
+  type: NodePort #Exposes the service as a node port
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: ${PORT}
+  selector:
+    app: microservice-speaker
+---
