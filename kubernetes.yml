@@ -1,23 +1,23 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: microservice-speaker
+  name: speaker-app
 spec:
   selector:
     matchLabels:
-      app: microservice-speaker
+      app: speaker-app
   replicas: 1 # deployment runs 1 pods matching the template
   template: # create pods using pod definition in this template
     metadata:
       labels:
-        app: microservice-speaker
+        app: speaker-app
     spec:
       containers:
-      - name: microservice-speaker
+      - name: speaker-app
         image: rcandidosilva/microservice-speaker:latest
         imagePullPolicy: Always
         ports:
-        - name: microservice-speaker
+        - name: speaker-app
           containerPort: 8080 #Endpoint is at port 8080 in the container
           protocol: TCP
       imagePullSecrets:
@@ -28,7 +28,7 @@ kind: Service
 metadata:
   name: speaker-svc
   labels:
-    app: microservice-speaker
+    app: speaker-app
 spec:
   type: NodePort #Exposes the service as a node port
   ports:
@@ -36,5 +36,5 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: microservice-speaker
+    app: speaker-app
 ---
