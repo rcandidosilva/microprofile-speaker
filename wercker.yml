@@ -27,22 +27,22 @@ push-release:
       cmd: sh target/bin/start
 
 #Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
-#deploy-to-cluster:
-#  box:
-#    id: alpine
-#    cmd: /bin/sh
-#  steps:
-#
-#  - bash-template
-#
-#  - script:
-#      name: "Visualise Kubernetes config"
-#      code: cat kubernetes.yml
-#
-#  - kubectl:
-#      name: deploy to kubernetes
-#      server: $KUBERNETES_MASTER
-#      #username: $KUBERNETES_USERNAME
-#      token: $KUBERNETES_TOKEN
-#      insecure-skip-tls-verify: true
-#      command: apply -f kubernetes.yml
+deploy-to-cluster:
+  box:
+    id: alpine
+    cmd: /bin/sh
+  steps:
+
+  - bash-template
+
+  - script:
+      name: "Visualise Kubernetes config"
+      code: cat kubernetes.yml
+
+  - kubectl:
+      name: deploy to kubernetes
+      server: $KUBERNETES_MASTER
+      #username: $KUBERNETES_USERNAME
+      token: $KUBERNETES_TOKEN
+      insecure-skip-tls-verify: true
+      command: apply -f kubernetes.yml
