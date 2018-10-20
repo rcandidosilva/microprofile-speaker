@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: speaker-app
-        image: rcandidosilva/microservice-speaker:latest
+        image: rcandidosilva/microprofile-speaker:latest
         imagePullPolicy: Always
         ports:
         - name: speaker-app
