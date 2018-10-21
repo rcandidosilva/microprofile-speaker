@@ -15,9 +15,11 @@ public class SpeakerService {
     public void init() {
         speakers = Arrays.asList(
                 new Speaker(1, "Rodrigo", "Silva", "Software Architect", "Integritas"),
-                new Speaker(2, "Bruno", "Borges", "Principal Cloud Developer Advocate", "Microsoft"),
+                new Speaker(2, "Edson", "Yanaga", "Director of Developer Experience", "RedHat"),
                 new Speaker(3, "Otavio", "Santana", "Software Engineer", "Tomitribe"),
-                new Speaker(4, "Ivan", "Junckes", "Software Engineer", "Tomitribe"));
+                new Speaker(4, "Ivan", "Junckes", "Software Engineer", "Tomitribe"),
+                new Speaker(5, "Elder", "Moraes", "Cloud Evangelist", "Oracle")
+        );
     }
 
     public List<Speaker> getSpeakers() {
