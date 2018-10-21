@@ -13,16 +13,12 @@ build:
       name: maven build
       code: mvn clean package
 
-#Build a new docker image
-docker-build:
+#Build and push the docker image with our built and tested application to the Oracle Container Registry
+push-release:
   steps:
   - internal/docker-build:
       dockerfile: Dockerfile
       image-name: microprofile-speaker
-
-#Push the docker image with our built and tested application to the Oracle Container Registry
-push-release:
-  steps:
   - internal/docker-push:
       username: $DOCKER_USERNAME
       password: $DOCKER_PASSWORD
@@ -37,17 +33,13 @@ deploy-to-cluster:
     id: alpine
     cmd: /bin/sh
   steps:
-
   - bash-template
-
   - script:
       name: "Visualise Kubernetes config"
       code: cat kubernetes.yml
-
   - kubectl:
       name: deploy to kubernetes
       server: $KUBERNETES_MASTER
-#      username: $KUBERNETES_USERNAME
       token: $KUBERNETES_TOKEN
       insecure-skip-tls-verify: true
       command: apply -f kubernetes.yml
