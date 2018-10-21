@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: speaker-app
-        image: iad.ocir.io/rodrigocandidosilva/microprofile-speaker:latest
+        image: iad.ocir.io/rodrigocandidosilva/microprofile-speaker
         imagePullPolicy: Always
         ports:
         - name: speaker-app
