@@ -1,23 +1,23 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: speaker-app
+  name: speaker
 spec:
   selector:
     matchLabels:
-      app: speaker-app
+      app: speaker
   replicas: 1 # deployment runs 1 pods matching the template
   template: # create pods using pod definition in this template
     metadata:
       labels:
-        app: speaker-app
+        app: speaker
     spec:
       containers:
-      - name: speaker-app
-        image: iad.ocir.io/rodrigocandidosilva/microprofile-speaker
+      - name: speaker
+        image: iad.ocir.io/rodrigocandidosilva/speaker
         imagePullPolicy: Always
         ports:
-        - name: speaker-app
+        - name: speaker
           containerPort: 8080 #Endpoint is at port 8080 in the container
           protocol: TCP
       imagePullSecrets:
@@ -26,9 +26,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: speaker-svc
+  name: speaker
   labels:
-    app: speaker-app
+    app: speaker
 spec:
   type: LoadBalancer #Exposes the service port
   ports:
@@ -36,5 +36,5 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: speaker-app
+    app: speaker
 ---
