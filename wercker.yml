@@ -25,7 +25,7 @@ push-release:
       repository: $DOCKER_REPO
       registry: $DOCKER_REGISTRY
       image-name: microprofile-speaker
-      tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
+      tag: latest
 
 #Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
 deploy-to-cluster:

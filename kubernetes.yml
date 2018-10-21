@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: speaker-app
-        image: iad.ocir.io/rodrigocandidosilva/microprofile-speaker:${WERCKER_GIT_BRANCH}-${WERCKER_GIT_COMMIT}
+        image: iad.ocir.io/rodrigocandidosilva/microprofile-speaker:latest
         imagePullPolicy: Always
         ports:
         - name: speaker-app
