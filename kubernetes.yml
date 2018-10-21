@@ -30,9 +30,9 @@ metadata:
   labels:
     app: speaker-app
 spec:
-  type: ClusterIP #Exposes the service as a node port
+  type: NodePort #Exposes the service as a node port
   ports:
-  - port: 30000
+  - port: 8080
     protocol: TCP
     targetPort: 8080
   selector:
