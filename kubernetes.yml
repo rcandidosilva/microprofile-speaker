@@ -30,9 +30,9 @@ metadata:
   labels:
     app: speaker-app
 spec:
-  type: NodePort #Exposes the service as a node port
+  type: LoadBalancer #Exposes the service port
   ports:
-  - port: 8080
+  - port: 30000
     protocol: TCP
     targetPort: 8080
   selector:
