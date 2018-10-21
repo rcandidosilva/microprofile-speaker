@@ -15,6 +15,7 @@ build:
 
 #Build a new docker image
 docker-build:
+  steps:
   - internal/docker-build:
       dockerfile: Dockerfile
       image-name: microprofile-speaker
