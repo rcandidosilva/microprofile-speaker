@@ -13,6 +13,12 @@ build:
       name: maven build
       code: mvn clean package
 
+#Build a new docker image
+docker-build:
+  - internal/docker-build:
+      dockerfile: Dockerfile
+      image-name: microprofile-speaker
+
 #Push the docker image with our built and tested application to the Oracle Container Registry
 push-release:
   steps:
@@ -21,10 +27,9 @@ push-release:
       password: $DOCKER_PASSWORD
       repository: $DOCKER_REPO
       registry: $DOCKER_REGISTRY
+      image-name: microprofile-speaker
       tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
       working-dir: /pipeline/source
-      ports: $PORT
-      cmd: sh target/bin/start
 
 #Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
 deploy-to-cluster:
