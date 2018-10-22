@@ -27,7 +27,7 @@ push-release:
       image-name: speaker
       tag: latest
 
-#Deploy our container from the Oracle Container Registry to the Oracle Container Engine (Kubernetes)
+#Deploy our container from the Oracle Container Registry to the Oracle Container Engine
 deploy-to-cluster:
   box:
     id: alpine
