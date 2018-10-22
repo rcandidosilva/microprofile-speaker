@@ -12,6 +12,6 @@ public class SpeakerHealth implements HealthCheck {
 
     @Override
     public HealthCheckResponse call() {
-        return HealthCheckResponse.named("speaker").up().build();
+        return HealthCheckResponse.named("speaker-x").up().build();
     }
 }
