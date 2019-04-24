@@ -42,4 +42,4 @@ deploy-to-cluster:
       server: $KUBERNETES_MASTER
       token: $KUBERNETES_TOKEN
       insecure-skip-tls-verify: true
-      command: apply -f kubernetes.yml
+      command: apply --namespace=microprofile -f kubernetes.yml
